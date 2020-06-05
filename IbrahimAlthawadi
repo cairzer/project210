@@ -1,0 +1,17 @@
+void setup() {
+
+}
+
+void loop() {
+    // collcet data from analog A0 (soil sensor)
+    int value = analogRead(A0); // read the collected vaule 
+    String soil = String(value); // change the value to string 
+    
+    //publish the Dry event evrey houre 
+    if (value < 1800) Particle.publish("Dry", "Dry", PRIVATE);
+    if (value < 1800) delay(60000*60); // Wait for 1 houre 
+     
+    delay(60000);                     // Wait for 10 seconds
+    
+    
+}
